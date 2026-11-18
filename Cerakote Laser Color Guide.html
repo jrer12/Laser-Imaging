@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cerakote Laser Color Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ecebe7; --panel:#fbfbf9; --ink:#1b1c1e; --muted:#62645f; --line:#d6d5cf;
+  --metal:#B0B0B0; --accent:#c2410c; --hi:#166534; --hi-bg:#dcfce7; --md:#854d0e; --md-bg:#fef3c7; --lo:#9f1239; --lo-bg:#ffe4e6;
+  --img:#1e3a8a; --img-bg:#dbeafe;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,system-ui,sans-serif}
+header{background:#18191b;color:#f3f2ee;padding:28px 28px 22px}
+header .wrap,main{max-width:1320px;margin:0 auto}
+h1{font:700 40px/1 "Barlow Condensed",sans-serif;letter-spacing:.5px;margin:0 0 6px;text-transform:uppercase}
+h1 span{color:#f97316}
+header p{margin:0;color:#b9bab4;max-width:820px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.stat{background:#25272a;border:1px solid #34363a;border-radius:8px;padding:10px 14px;min-width:120px}
+.stat b{display:block;font:700 26px/1 "Barlow Condensed";color:#fff}
+.stat small{color:#a3a49e;font-size:12px}
+main{padding:22px 28px 60px}
+h2{font:700 24px/1.1 "Barlow Condensed";text-transform:uppercase;letter-spacing:.4px;margin:34px 0 10px}
+.explain{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.box h3{margin:0 0 6px;font:600 17px "Barlow Condensed";text-transform:uppercase;letter-spacing:.3px}
+.box p,.box li{margin:0;color:#3d3f3b;font-size:13px}
+.box ul{margin:4px 0 0;padding-left:18px}
+.pill{display:inline-block;font:600 11px Inter;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.p-hi{background:var(--hi-bg);color:var(--hi)}.p-md{background:var(--md-bg);color:var(--md)}.p-lo{background:var(--lo-bg);color:var(--lo)}
+.p-img{background:var(--img-bg);color:var(--img)}.p-met{background:#ede9e3;color:#57534e}.p-fix{background:#fff7ed;color:var(--accent);border:1px solid #fed7aa}
+.controls{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-bottom:1px solid var(--line)}
+.controls input,.controls select{font:inherit;padding:7px 10px;border:1px solid #c9c8c1;border-radius:7px;background:#fff}
+.controls input[type=search]{min-width:220px}
+.seg{display:inline-flex;border:1px solid #c9c8c1;border-radius:7px;overflow:hidden;background:#fff}
+.seg button{font:500 13px Inter;border:0;background:transparent;padding:7px 11px;cursor:pointer;color:#3d3f3b}
+.seg button+button{border-left:1px solid #e1e0da}
+.seg button.on{background:#18191b;color:#fff}
+.count{margin-left:auto;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:14px;margin-top:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.sw{height:96px;position:relative}
+.sw .met{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.0) 30%,rgba(255,255,255,.22) 48%,rgba(255,255,255,0) 66%)}
+.prev{height:58px;display:flex;align-items:center;gap:10px;padding:0 12px;border-top:1px solid rgba(0,0,0,.08)}
+.prev svg{flex:none}
+.prev .lbl{font:500 10px Inter;text-transform:uppercase;letter-spacing:.6px;opacity:.75}
+.body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:7px;flex:1}
+.ttl{display:flex;justify-content:space-between;gap:6px;align-items:baseline}
+.ttl b{font:600 18px/1.1 "Barlow Condensed";text-transform:uppercase;letter-spacing:.3px}
+.code{font:500 12px "JetBrains Mono",monospace;color:var(--muted);white-space:nowrap}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tip{font-size:12.5px;color:#3d3f3b;flex:1}
+.foot{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.hex{font:500 12px "JetBrains Mono";background:#f0efea;border:1px solid #dddcd5;border-radius:6px;padding:3px 7px;cursor:pointer}
+.hex:hover{border-color:#999}
+a{color:#9a3412}
+.pair{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:16px;align-items:stretch}
+.pair .box label{display:block;font:600 12px Inter;margin:8px 0 4px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.pair select{width:100%;font:inherit;padding:8px;border:1px solid #c9c8c1;border-radius:7px;background:#fff}
+#pairPrev{border-radius:12px;min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;border:1px solid var(--line);padding:20px;text-align:center}
+#pairPrev .big{font:700 64px/1 "Barlow Condensed";letter-spacing:2px}
+#pairPrev .small{font:600 14px Inter;letter-spacing:3px}
+.verdict{margin-top:12px;font-size:13px}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.quick button{font:500 12px Inter;border:1px solid #c9c8c1;background:#fff;border-radius:999px;padding:4px 10px;cursor:pointer}
+.note{font-size:12.5px;color:var(--muted);margin-top:28px;border-top:1px solid var(--line);padding-top:14px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#18191b;color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media (max-width:760px){.pair{grid-template-columns:1fr}h1{font-size:30px}header,main{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Cerakote <span>Laser</span> Color Guide</h1>
+  <p>Your 77 laser colors with a sampled swatch from each color's Cerakote.com product page, Cerakote's own laser-imaging recommendations, and an estimate of how well each one reads when the laser cuts through to bare metal.</p>
+  <div class="stats" id="stats"></div>
+</div></header>
+<main>
+  <h2>How to read this</h2>
+  <div class="explain">
+    <div class="box"><h3>Three ways to laser Cerakote</h3>
+      <ul><li><b>Ablate to metal</b>: remove the coating to expose the substrate.</li>
+      <li><b>Two-layer</b>: remove a top coat to reveal a base coat of another color.</li>
+      <li><b>Laser imaging</b>: shift the tone of a single color <i>without</i> removing it, so the protection stays intact.</li></ul></div>
+    <div class="box"><h3><span class="pill p-img">Imaging list</span> Tone-shift colors</h3>
+      <p>Colors from your list that Cerakote names as recommended for laser imaging (24 of 77). Use them for ghost logos, camo, topo and pattern work. Cerakote recommends a 20–60 W fiber laser and a power-vs-frequency "square test" on 3"×6" panels, starting around 500–800 kHz.</p></div>
+    <div class="box"><h3>Metal contrast rating</h3>
+      <p><span class="pill p-hi">High</span> fine lines, small text and halftones read well. <span class="pill p-md">Medium</span> keep line weights bold and skip hairlines. <span class="pill p-lo">Low</span> the cut blends with bare metal, so use big filled shapes, color-fill, or a two-layer job instead.</p></div>
+    <div class="box"><h3>Caveats</h3>
+      <p>Hex values are sampled from Cerakote's product photos (swatch panels for H-Series, the coated tumbler for F-Series), so they are close but lit. The contrast rating compares each swatch to a mid-grey "bare metal" tone (#B0B0B0). Your substrate (aluminum, nitrided steel, polymer) will change the real result, so confirm on a test panel before quoting a job.</p></div>
+  </div>
+
+  <h2>Colors</h2>
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search name or SKU…">
+    <div class="seg" id="series"><button data-v="all" class="on">All</button><button data-v="H">H-Series</button><button data-v="F">F-Series</button></div>
+    <div class="seg" id="abl"><button data-v="all" class="on">Any contrast</button><button data-v="High">High</button><button data-v="Medium">Medium</button><button data-v="Low">Low</button></div>
+    <div class="seg" id="imgf"><button data-v="all" class="on">All methods</button><button data-v="img">Imaging list only</button></div>
+    <select id="sort">
+      <option value="sheet">Sort: your sheet order</option>
+      <option value="sku">Sort: Cerakote SKU number</option>
+      <option value="dark">Sort: dark → light</option>
+      <option value="contrast">Sort: best metal contrast</option>
+      <option value="name">Sort: name A–Z</option>
+    </select>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <h2>Two-layer pairing checker</h2>
+  <div class="pair">
+    <div class="box">
+      <p>Pick a top coat (the lasered field) and a base coat (what the laser reveals). The preview shows the base coat showing through the top coat.</p>
+      <label for="top">Top coat</label><select id="top"></select>
+      <label for="base">Base coat</label><select id="base"></select>
+      <div class="verdict" id="verdict"></div>
+      <div class="quick" id="quick"></div>
+    </div>
+    <div id="pairPrev"><div class="big">TC</div><div class="small">TAYLOR CUSTOMS</div></div>
+  </div>
+
+  <div class="note">
+    <b>Data notes.</b> Your sheet lists <b>H-249 Midnight Bronze</b>; Cerakote has no H-249, so this guide uses <b>H-294 Midnight Bronze</b>. "ARTIC" (F-125) is <b>Arctic White</b> on Cerakote's site. Swatch hex values were sampled from cerakote.com product images on Nov 18, 2026, and metallic colors are approximate because shimmer doesn't show in a flat swatch.
+    Sources: <a href="https://www.cerakote.com/knowledge-base/202/cerakote-laser-imaging">Cerakote Knowledge Base: Cerakote Laser Imaging</a> · individual product pages linked on each card.
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+const DATA = [{"series": "H", "sheetSku": "249", "code": "H-294", "name": "Midnight Bronze", "hex": "#6B5241", "L": 37.0, "metallic": true, "finish": "", "imaging": true, "dE": 38.3, "ablation": "High", "markDir": "light", "note": "Your sheet lists H-249; Cerakote has no H-249. Midnight Bronze is H-294.", "url": "https://www.cerakote.com/shop/cerakote-coating/H-294"}, {"series": "H", "sheetSku": "210", "code": "H-210", "name": "Sig Dark Grey", "hex": "#706357", "L": 42.8, "metallic": false, "finish": "", "imaging": false, "dE": 30.4, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-210"}, {"series": "H", "sheetSku": "226", "code": "H-226", "name": "Patriot Brown", "hex": "#82674E", "L": 45.6, "metallic": false, "finish": "Flat/Matte", "imaging": true, "dE": 32.7, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-226"}, {"series": "H", "sheetSku": "293", "code": "H-293", "name": "Vortex Bronze", "hex": "#674F40", "L": 35.7, "metallic": true, "finish": "Flat/Matte", "imaging": true, "dE": 39.1, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-293"}, {"series": "H", "sheetSku": "231", "code": "H-231", "name": "Magpul Foliage Green", "hex": "#7A6F58", "L": 47.3, "metallic": false, "finish": "", "imaging": false, "dE": 28.5, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-231"}, {"series": "H", "sheetSku": "229", "code": "H-229", "name": "Sniper Green", "hex": "#857350", "L": 49.3, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 31.5, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-229"}, {"series": "H", "sheetSku": "234", "code": "H-234", "name": "Sniper Grey", "hex": "#726D69", "L": 46.4, "metallic": false, "finish": "", "imaging": false, "dE": 25.7, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-234"}, {"series": "H", "sheetSku": "298", "code": "H-298", "name": "Plum Brown", "hex": "#7F6C57", "L": 46.9, "metallic": false, "finish": "", "imaging": true, "dE": 29.2, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-298"}, {"series": "H", "sheetSku": "232", "code": "H-232", "name": "Magpul O.D. Green", "hex": "#584E3A", "L": 33.6, "metallic": false, "finish": "", "imaging": false, "dE": 40.5, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-232"}, {"series": "H", "sheetSku": "237", "code": "H-237", "name": "Tungsten", "hex": "#91867E", "L": 56.7, "metallic": true, "finish": "", "imaging": false, "dE": 16.5, "ablation": "Low", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-237"}, {"series": "H", "sheetSku": "402", "code": "H-402", "name": "Jesse James Cold War Grey", "hex": "#767B77", "L": 51.1, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 21.0, "ablation": "Low", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-402"}, {"series": "H", "sheetSku": "345", "code": "H-345", "name": "Multicam Dark Grey", "hex": "#6A6C6C", "L": 45.5, "metallic": false, "finish": "", "imaging": false, "dE": 26.4, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-345"}, {"series": "H", "sheetSku": "337", "code": "H-337", "name": "Platinum Grey", "hex": "#696960", "L": 44.2, "metallic": true, "finish": "", "imaging": false, "dE": 28.2, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-337"}, {"series": "H", "sheetSku": "146", "code": "H-146", "name": "Graphite Black", "hex": "#443E38", "L": 26.6, "metallic": false, "finish": "Satin", "imaging": false, "dE": 45.5, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-146"}, {"series": "H", "sheetSku": "109", "code": "H-109", "name": "Gloss Black", "hex": "#1C1A19", "L": 9.4, "metallic": false, "finish": "Gloss", "imaging": false, "dE": 62.4, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-109"}, {"series": "H", "sheetSku": "304", "code": "H-304", "name": "Springfield Grey", "hex": "#5A5450", "L": 36.2, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 35.9, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-304"}, {"series": "H", "sheetSku": "314", "code": "H-314", "name": "Crushed Orchid", "hex": "#9289AC", "L": 59.0, "metallic": true, "finish": "", "imaging": true, "dE": 24.0, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-314"}, {"series": "H", "sheetSku": "148", "code": "H-148", "name": "Burnt Bronze", "hex": "#866E57", "L": 48.1, "metallic": true, "finish": "", "imaging": false, "dE": 29.4, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-148"}, {"series": "H", "sheetSku": "236", "code": "H-236", "name": "O.D. Green", "hex": "#695E48", "L": 40.4, "metallic": false, "finish": "", "imaging": false, "dE": 34.5, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-236"}, {"series": "H", "sheetSku": "240", "code": "H-240", "name": "Mil Spec O.D. Green", "hex": "#736850", "L": 44.4, "metallic": false, "finish": "", "imaging": true, "dE": 31.3, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-240"}, {"series": "H", "sheetSku": "200", "code": "H-200", "name": "Highland Green", "hex": "#6A6E56", "L": 45.5, "metallic": false, "finish": "", "imaging": false, "dE": 30.0, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-200"}, {"series": "H", "sheetSku": "354", "code": "H-354", "name": "Lemon Zest", "hex": "#F8E52D", "L": 89.9, "metallic": false, "finish": "", "imaging": false, "dE": 85.3, "ablation": "High", "markDir": "dark", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-354"}, {"series": "H", "sheetSku": "130", "code": "H-130", "name": "Combat Grey", "hex": "#757674", "L": 49.5, "metallic": false, "finish": "", "imaging": false, "dE": 22.4, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-130"}, {"series": "H", "sheetSku": "139", "code": "H-139", "name": "Steel Grey", "hex": "#B8AEA8", "L": 71.8, "metallic": false, "finish": "", "imaging": false, "dE": 5.0, "ablation": "Low", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-139"}, {"series": "H", "sheetSku": "184", "code": "H-184", "name": "Glock Grey", "hex": "#706861", "L": 44.5, "metallic": true, "finish": "", "imaging": false, "dE": 27.8, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-184"}, {"series": "H", "sheetSku": "151", "code": "H-151", "name": "Satin Aluminum", "hex": "#C4B6A7", "L": 74.8, "metallic": true, "finish": "Satin", "imaging": false, "dE": 10.2, "ablation": "Low", "markDir": "dark", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-151"}, {"series": "H", "sheetSku": "188", "code": "H-188", "name": "Magpul Stealth Grey", "hex": "#494544", "L": 29.6, "metallic": false, "finish": "", "imaging": true, "dE": 42.2, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-188"}, {"series": "H", "sheetSku": "327", "code": "H-327", "name": "Rose Gold", "hex": "#CA988A", "L": 67.2, "metallic": true, "finish": "", "imaging": false, "dE": 22.8, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-327"}, {"series": "H", "sheetSku": "321", "code": "H-321", "name": "Blush", "hex": "#BA8E92", "L": 63.2, "metallic": true, "finish": "", "imaging": false, "dE": 19.8, "ablation": "Low", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-321"}, {"series": "H", "sheetSku": "375", "code": "H-375", "name": "Black Gold", "hex": "#6A605B", "L": 41.5, "metallic": true, "finish": "Flat/Matte", "imaging": false, "dE": 30.8, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-375"}, {"series": "H", "sheetSku": "359", "code": "H-359", "name": "Smoked Bronze", "hex": "#A8947B", "L": 62.5, "metallic": true, "finish": "", "imaging": false, "dE": 18.8, "ablation": "Low", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-359"}, {"series": "H", "sheetSku": "305", "code": "H-305", "name": "Springfield FDE", "hex": "#88684A", "L": 46.5, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 34.6, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-305"}, {"series": "H", "sheetSku": "189", "code": "H-189", "name": "Noveske Bazooka Green", "hex": "#A1946C", "L": 61.5, "metallic": false, "finish": "", "imaging": true, "dE": 25.2, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-189"}, {"series": "H", "sheetSku": "326", "code": "H-326", "name": "Polar Blue", "hex": "#A6B0C0", "L": 71.5, "metallic": true, "finish": "", "imaging": true, "dE": 9.3, "ablation": "Low", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-326"}, {"series": "H", "sheetSku": "238", "code": "H-238", "name": "Midnight Blue", "hex": "#2B2A29", "L": 17.1, "metallic": false, "finish": "", "imaging": false, "dE": 54.7, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-238"}, {"series": "H", "sheetSku": "245", "code": "H-245", "name": "SOCOM Blue", "hex": "#463F3B", "L": 27.2, "metallic": false, "finish": "", "imaging": false, "dE": 44.8, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-245"}, {"series": "H", "sheetSku": "401", "code": "H-401", "name": "Jesse James Civil Defense Blue", "hex": "#6F8684", "L": 54.1, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 19.8, "ablation": "Low", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-401"}, {"series": "H", "sheetSku": "297", "code": "H-297", "name": "Stormtrooper White", "hex": "#F3F1EE", "L": 95.2, "metallic": false, "finish": "", "imaging": true, "dE": 23.4, "ablation": "Medium", "markDir": "dark", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-297"}, {"series": "H", "sheetSku": "140", "code": "H-140", "name": "Bright White", "hex": "#F0EFEC", "L": 94.4, "metallic": false, "finish": "", "imaging": true, "dE": 22.7, "ablation": "Medium", "markDir": "dark", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-140"}, {"series": "H", "sheetSku": "34094", "code": "H-34094", "name": "FS Green", "hex": "#747C6A", "L": 50.9, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 23.7, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-34094"}, {"series": "H", "sheetSku": "400", "code": "H-400", "name": "Jesse James Eastern Front Green", "hex": "#53573B", "L": 35.9, "metallic": false, "finish": "", "imaging": false, "dE": 39.8, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-400"}, {"series": "H", "sheetSku": "343", "code": "H-343", "name": "Multicam Bright Green", "hex": "#837F45", "L": 52.3, "metallic": false, "finish": "", "imaging": true, "dE": 38.1, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-343"}, {"series": "H", "sheetSku": "127", "code": "H-127", "name": "Kel-Tec Navy Blue", "hex": "#57606F", "L": 40.5, "metallic": false, "finish": "", "imaging": false, "dE": 32.8, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-127"}, {"series": "H", "sheetSku": "296", "code": "H-296", "name": "Cobalt Kinetics Green", "hex": "#75654A", "L": 43.6, "metallic": true, "finish": "", "imaging": false, "dE": 33.3, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-296"}, {"series": "H", "sheetSku": "264", "code": "H-264", "name": "Mil Spec Green", "hex": "#5D5846", "L": 37.4, "metallic": false, "finish": "", "imaging": false, "dE": 36.2, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-264"}, {"series": "H", "sheetSku": "166", "code": "H-166", "name": "Electric Yellow", "hex": "#F3B520", "L": 77.4, "metallic": false, "finish": "", "imaging": false, "dE": 76.2, "ablation": "High", "markDir": "dark", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-166"}, {"series": "H", "sheetSku": "144", "code": "H-144", "name": "Corvette Yellow", "hex": "#FAB024", "L": 77.0, "metallic": false, "finish": "", "imaging": false, "dE": 76.2, "ablation": "High", "markDir": "dark", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-144"}, {"series": "H", "sheetSku": "258", "code": "H-258", "name": "Chocolate Brown", "hex": "#745C4A", "L": 41.0, "metallic": false, "finish": "", "imaging": false, "dE": 34.6, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-258"}, {"series": "H", "sheetSku": "250", "code": "H-250", "name": "A.I. Dark Earth", "hex": "#A67C4A", "L": 55.1, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 38.8, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-250"}, {"series": "H", "sheetSku": "255", "code": "H-255", "name": "Crushed Silver", "hex": "#D0C9C5", "L": 81.4, "metallic": true, "finish": "", "imaging": false, "dE": 10.1, "ablation": "Low", "markDir": "dark", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-255"}, {"series": "H", "sheetSku": "259", "code": "H-259", "name": "Barrett Bronze", "hex": "#6A4A38", "L": 34.5, "metallic": false, "finish": "", "imaging": false, "dE": 42.2, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-259"}, {"series": "H", "sheetSku": "248", "code": "H-248", "name": "Forest Green", "hex": "#82785C", "L": 50.6, "metallic": false, "finish": "", "imaging": false, "dE": 27.1, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-248"}, {"series": "H", "sheetSku": "265", "code": "H-265", "name": "Flat Dark Earth", "hex": "#A4896C", "L": 58.9, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 24.1, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-265"}, {"series": "H", "sheetSku": "267", "code": "H-267", "name": "Magpul Flat Dark Earth", "hex": "#A88968", "L": 59.2, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 26.5, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-267"}, {"series": "H", "sheetSku": "261", "code": "H-261", "name": "Glock FDE", "hex": "#876D53", "L": 47.9, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 30.9, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-261"}, {"series": "H", "sheetSku": "262", "code": "H-262", "name": "Stone Grey", "hex": "#73716E", "L": 47.7, "metallic": true, "finish": "", "imaging": false, "dE": 24.2, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-262"}, {"series": "H", "sheetSku": "269", "code": "H-269", "name": "Barrett Brown", "hex": "#AF865A", "L": 58.9, "metallic": false, "finish": "", "imaging": false, "dE": 33.9, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-269"}, {"series": "H", "sheetSku": "295", "code": "H-295", "name": "Cobalt Kinetics Slate", "hex": "#6D6563", "L": 43.4, "metallic": false, "finish": "", "imaging": false, "dE": 28.6, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-295"}, {"series": "H", "sheetSku": "268", "code": "H-268", "name": "Troy Coyote Tan", "hex": "#A97F56", "L": 56.4, "metallic": false, "finish": "", "imaging": true, "dE": 34.3, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/H-268"}, {"series": "F", "sheetSku": "108", "code": "F-108", "name": "Bronze", "hex": "#624E47", "L": 35.0, "metallic": true, "finish": "Flat/Matte", "imaging": true, "dE": 38.2, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-108"}, {"series": "F", "sheetSku": "109", "code": "F-109", "name": "Storm", "hex": "#77767C", "L": 49.9, "metallic": false, "finish": "Flat/Matte", "imaging": true, "dE": 22.2, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-109"}, {"series": "F", "sheetSku": "110", "code": "F-110", "name": "Black Ink", "hex": "#252427", "L": 14.4, "metallic": true, "finish": "Flat/Matte", "imaging": false, "dE": 57.5, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-110"}, {"series": "F", "sheetSku": "119", "code": "F-119", "name": "Magpul O.D.Green", "hex": "#53493F", "L": 31.7, "metallic": false, "finish": "Flat/Matte", "imaging": true, "dE": 40.9, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-119"}, {"series": "F", "sheetSku": "117", "code": "F-117", "name": "Navy Blue", "hex": "#294057", "L": 26.2, "metallic": false, "finish": "", "imaging": true, "dE": 48.5, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-117"}, {"series": "F", "sheetSku": "115", "code": "F-115", "name": "FS 20150", "hex": "#A98872", "L": 59.2, "metallic": false, "finish": "Flat/Matte", "imaging": true, "dE": 22.8, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-115"}, {"series": "F", "sheetSku": "118", "code": "F-118", "name": "Shale", "hex": "#56514B", "L": 34.7, "metallic": false, "finish": "Flat/Matte", "imaging": true, "dE": 37.3, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-118"}, {"series": "F", "sheetSku": "114", "code": "F-114", "name": "M17 Coyote Tan", "hex": "#917163", "L": 50.4, "metallic": false, "finish": "Flat/Matte", "imaging": true, "dE": 27.0, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-114"}, {"series": "F", "sheetSku": "113", "code": "F-113", "name": "Badlands", "hex": "#645248", "L": 36.4, "metallic": false, "finish": "Flat/Matte", "imaging": true, "dE": 36.9, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-113"}, {"series": "F", "sheetSku": "112", "code": "F-112", "name": "Satin Aluminum", "hex": "#CECCCD", "L": 82.2, "metallic": true, "finish": "Satin", "imaging": false, "dE": 10.4, "ablation": "Low", "markDir": "dark", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-112"}, {"series": "F", "sheetSku": "122", "code": "F-122", "name": "Yellow Jacket", "hex": "#EDC200", "L": 79.9, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 81.9, "ablation": "High", "markDir": "dark", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-122"}, {"series": "F", "sheetSku": "123", "code": "F-123", "name": "Burnt Orange", "hex": "#CC5F01", "L": 53.0, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 75.5, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-123"}, {"series": "F", "sheetSku": "102", "code": "F-102", "name": "Carbon Black", "hex": "#272627", "L": 15.3, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 56.5, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-102"}, {"series": "F", "sheetSku": "103", "code": "F-103", "name": "Slate", "hex": "#2B2C38", "L": 18.4, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 54.1, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-103"}, {"series": "F", "sheetSku": "125", "code": "F-125", "name": "Arctic White", "hex": "#EAEAEA", "L": 92.7, "metallic": false, "finish": "Satin", "imaging": true, "dE": 20.9, "ablation": "Low", "markDir": "dark", "note": "Cerakote spells it Arctic White.", "url": "https://www.cerakote.com/shop/cerakote-coating/F-125"}, {"series": "F", "sheetSku": "106", "code": "F-106", "name": "Flat Dark Earth", "hex": "#7C604B", "L": 43.0, "metallic": false, "finish": "Flat/Matte", "imaging": true, "dE": 34.2, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-106"}, {"series": "F", "sheetSku": "104", "code": "F-104", "name": "Black Shadow", "hex": "#3C3B41", "L": 25.2, "metallic": false, "finish": "Flat/Matte", "imaging": false, "dE": 46.8, "ablation": "High", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-104"}, {"series": "F", "sheetSku": "105", "code": "F-105", "name": "O.D. Green", "hex": "#6A6457", "L": 42.6, "metallic": false, "finish": "Flat/Matte", "imaging": true, "dE": 30.4, "ablation": "Medium", "markDir": "light", "note": "", "url": "https://www.cerakote.com/shop/cerakote-coating/F-105"}];
+DATA.forEach((d,i)=>d.order=i);
+const $=s=>document.querySelector(s);
+const state={q:'',series:'all',abl:'all',img:'all',sort:'sheet'};
+const pillCls={High:'p-hi',Medium:'p-md',Low:'p-lo'};
+
+function lab(hex){
+  let [r,g,b]=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255).map(c=>c<=0.04045?c/12.92:Math.pow((c+0.055)/1.055,2.4));
+  const X=(0.4124*r+0.3576*g+0.1805*b)/0.95047,Y=0.2126*r+0.7152*g+0.0722*b,Z=(0.0193*r+0.1192*g+0.9505*b)/1.08883;
+  const f=t=>t>0.008856?Math.cbrt(t):7.787*t+16/116;
+  return [116*f(Y)-16,500*(f(X)-f(Y)),200*(f(Y)-f(Z))];
+}
+const dE=(a,b)=>{const p=lab(a),q=lab(b);return Math.hypot(p[0]-q[0],p[1]-q[1],p[2]-q[2])};
+const textOn=hex=>lab(hex)[0]>60?'#1b1c1e':'#f5f5f2';
+
+function tip(d){
+  const t=[];
+  if(d.ablation==='High') t.push(d.markDir==='dark'?'Bare metal reads darker than this color, giving a strong reversed mark. Fine detail works.':'Bright metal pops against it. Good for fine lines, small text and photo or halftone work.');
+  else if(d.ablation==='Medium') t.push(d.markDir==='dark'?'Metal shows as a soft grey mark. Use bold text and line art.':'Readable metal mark. Keep line weights bold and avoid hairlines and fine halftones.');
+  else t.push('Close to the bare-metal tone, so an ablated mark will be faint. Use large filled shapes, color-fill the cut, or run it as a two-layer job.');
+  if(d.imaging) t.push('On Cerakote’s laser-imaging list, so it can also take tone-shift art with no coating removed.');
+  return t.join(' ');
+}
+function previewSvg(d){
+  const m='#B0B0B0';
+  return `<svg width="64" height="36" viewBox="0 0 64 36" aria-hidden="true"><text x="0" y="27" font-family="Barlow Condensed" font-weight="700" font-size="30" fill="${m}">TC</text><g stroke="${m}"><line x1="34" y1="8" x2="64" y2="8" stroke-width="3"/><line x1="34" y1="17" x2="64" y2="17" stroke-width="1.2"/><line x1="34" y1="25" x2="64" y2="25" stroke-width=".5"/></g></svg>`;
+}
+function card(d){
+  const fg=textOn(d.hex);
+  return `<div class="card">
+    <div class="sw" style="background:${d.hex}">${d.metallic?'<div class="met"></div>':''}</div>
+    <div class="prev" style="background:${d.hex};color:${fg}">${previewSvg(d)}<span class="lbl">Ablated to<br>metal (sim.)</span></div>
+    <div class="body">
+      <div class="ttl"><b>${d.name}</b><span class="code">${d.code}</span></div>
+      <div class="tags"><span class="pill ${pillCls[d.ablation]}">${d.ablation} metal contrast</span>${d.imaging?'<span class="pill p-img">Imaging list</span>':''}${d.metallic?'<span class="pill p-met">Metallic</span>':''}${d.note?'<span class="pill p-fix" title="'+d.note+'">SKU fixed</span>':''}</div>
+      <div class="tip">${tip(d)}</div>
+      <div class="foot"><span class="hex" data-hex="${d.hex}" title="Copy hex">${d.hex}</span><a href="${d.url}" target="_blank" rel="noopener">Cerakote page ↗</a></div>
+    </div></div>`;
+}
+function render(){
+  let rows=DATA.filter(d=>{
+    if(state.series!=='all'&&d.series!==state.series) return false;
+    if(state.abl!=='all'&&d.ablation!==state.abl) return false;
+    if(state.img==='img'&&!d.imaging) return false;
+    if(state.q){const q=state.q.toLowerCase(); if(!(d.name.toLowerCase().includes(q)||d.code.toLowerCase().includes(q)||d.sheetSku.includes(q))) return false;}
+    return true;});
+  const skuNum=d=>parseInt(d.code.split('-')[1],10);
+  const s={sheet:(a,b)=>a.order-b.order,sku:(a,b)=>(a.series===b.series?0:a.series==='H'?-1:1)||skuNum(a)-skuNum(b),dark:(a,b)=>a.L-b.L,contrast:(a,b)=>b.dE-a.dE,name:(a,b)=>a.name.localeCompare(b.name)}[state.sort];
+  rows.sort(s);
+  $('#grid').innerHTML=rows.map(card).join('');
+  $('#count').textContent=`${rows.length} of ${DATA.length} colors`;
+}
+function seg(id,key){document.querySelectorAll(`#${id} button`).forEach(b=>b.onclick=()=>{document.querySelectorAll(`#${id} button`).forEach(x=>x.classList.remove('on'));b.classList.add('on');state[key]=b.dataset.v;render();});}
+seg('series','series');seg('abl','abl');seg('imgf','img');
+$('#q').oninput=e=>{state.q=e.target.value.trim();render();};
+$('#sort').onchange=e=>{state.sort=e.target.value;render();};
+$('#grid').addEventListener('click',async e=>{const h=e.target.closest('.hex');if(!h)return;
+  try{await navigator.clipboard.writeText(h.dataset.hex);toast('Copied '+h.dataset.hex);}catch(_){toast(h.dataset.hex+' (copy blocked, select it manually)');}});
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1600);}
+
+// stats
+const c=k=>DATA.filter(d=>d.ablation===k).length;
+$('#stats').innerHTML=[[DATA.length,'colors'],[DATA.filter(d=>d.imaging).length,'on imaging list'],[c('High'),'high metal contrast'],[c('Medium'),'medium'],[c('Low'),'low: test first']].map(([n,l])=>`<div class="stat"><b>${n}</b><small>${l}</small></div>`).join('');
+
+// pair checker
+const opts=[...DATA].sort((a,b)=>a.series.localeCompare(b.series)||a.name.localeCompare(b.name)).map(d=>`<option value="${d.code}">${d.code} · ${d.name}</option>`).join('');
+$('#top').innerHTML=opts;$('#base').innerHTML=opts;
+const by=code=>DATA.find(d=>d.code===code);
+function pair(){
+  const t=by($('#top').value),b=by($('#base').value),e=dE(t.hex,b.hex);
+  const p=$('#pairPrev');p.style.background=t.hex;p.querySelectorAll('div').forEach(x=>x.style.color=b.hex);
+  const r=e>=45?['High','p-hi','Strong separation. Detailed artwork will read cleanly.']:e>=25?['Medium','p-md','Readable. Favor bold shapes and medium line weights.']:['Low','p-lo','The two colors are too close and the art will look muddy. Pick a lighter or darker base.'];
+  const mix=t.series!==b.series?'<br><span style="color:var(--accent)">These are from different series (H vs F). Confirm compatibility with Cerakote before layering.</span>':'';
+  $('#verdict').innerHTML=`<span class="pill ${r[1]}">${r[0]} separation</span> ΔE ${e.toFixed(0)}<br>${r[2]}${mix}`;
+}
+$('#top').onchange=pair;$('#base').onchange=pair;
+const quick=[['H-146','H-140','Graphite Black over Bright White'],['H-294','H-327','Midnight Bronze over Rose Gold'],['H-238','H-144','Midnight Blue over Corvette Yellow'],['F-102','F-125','Carbon Black over Arctic White'],['F-110','F-123','Black Ink over Burnt Orange'],['H-188','H-354','Stealth Grey over Lemon Zest']];
+$('#quick').innerHTML=quick.map((q,i)=>`<button data-i="${i}">${q[2]}</button>`).join('');
+$('#quick').onclick=e=>{const b=e.target.closest('button');if(!b)return;const q=quick[b.dataset.i];$('#top').value=q[0];$('#base').value=q[1];pair();};
+$('#top').value='H-146';$('#base').value='H-140';pair();
+render();
+</script>
+</body>
+</html>
